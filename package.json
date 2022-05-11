@@ -1,0 +1,17 @@
+{
+  "name": "ultra-bank-backend",
+  "version": "1.0.0",
+  "description": "UltraBank backend ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rnapoleon@imajine.ht",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "firebase-admin": "^10.2.0",
+    "mongodb": "^4.5.0"
+  }
+}
