@@ -4,7 +4,7 @@
   "description": "UltraBank backend ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "rnapoleon@imajine.ht",
   "license": "MIT",
@@ -12,6 +12,12 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "firebase-admin": "^10.2.0",
-    "mongodb": "^4.5.0"
+    "jest": "^28.1.0",
+    "mongodb": "^4.5.0",
+    "superagent": "^7.1.3",
+    "supertest": "^6.2.3"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1"
   }
 }

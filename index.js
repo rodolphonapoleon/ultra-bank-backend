@@ -3,27 +3,35 @@ var app = express();
 var cors = require("cors");
 var dal = require("./dal.js");
 const admin = require("./admin");
+const router = require("./routes/main");
 
 // used to serve static files from public directory
 app.use(express.static("public"));
 app.use(cors());
 
+// for testing purposes
+app.use("/", router);
+
+// app.get("/", (req, res) => {
+//   res.status(200).send("The bank app server is running properly");
+// });
+
 // create user account
 app.get("/account/create/:name/:email", function (req, res) {
   //   check if account exists
-  dal.find(req.params.email).then((users) => {
-    // if user exists, return error message
-    if (users.length > 0) {
-      console.log("User already in exists");
-      res.send("User already in exists");
-    } else {
-      //   else create user
-      dal.create(req.params.name, req.params.email).then((user) => {
-        console.log(user);
-        res.send(user);
-      });
-    }
+  // dal.find(req.params.email).then((users) => {
+  //   // if user exists, return error message
+  //   if (users.length > 0) {
+  //     console.log("User already in exists");
+  //     res.send("User already in exists");
+  //   } else {
+  //   else create user
+  dal.create(req.params.name, req.params.email).then((user) => {
+    console.log(user);
+    res.send(user);
   });
+  //   }
+  // });
 });
 
 // login user
@@ -92,3 +100,4 @@ app.get("/account/all", function (req, res) {
 var port = 3000;
 app.listen(port);
 console.log("Running on port: " + port);
+// module.exports = app;
