@@ -10,7 +10,7 @@ describe("Test server is running", function () {
       },
     };
     indextest(req, res);
-    expect(res.text).toEqual("The bank app server is running properly!");
+    expect(res.text).toEqual("The bank app server is running properly");
   });
 });
 
