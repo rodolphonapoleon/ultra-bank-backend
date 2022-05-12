@@ -1,5 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
-const url = "mongodb://localhost:27017";
+// const url = "mongodb://localhost:27017";
+const url =
+  "mongodb+srv://napo:12345@ultrabank-database.gpddg.mongodb.net/usersdata?retryWrites=true&w=majority";
 let db = null;
 
 // connect to mongo
