@@ -4,6 +4,7 @@
   "description": "UltraBank backend ",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "jest"
   },
   "author": "rnapoleon@imajine.ht",
