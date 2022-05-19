@@ -21,7 +21,7 @@ function create(name, email) {
     const doc = {
       name,
       email,
-      accountNumber: Math.floor(10000000 + Math.random() * 90000000),
+      accountNumber: Math.floor(10000000 + Math.random() * 90000000).toString(),
       balance: 0,
     };
     collection.insertOne(doc, { w: 1 }, function (err, result) {
