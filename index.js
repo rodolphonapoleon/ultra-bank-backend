@@ -92,6 +92,28 @@ app.get("/account/update/:email/:amount", function (req, res) {
     });
 });
 
+//edit Profile
+app.get("/account/edit/:email/:user", function (req, res) {
+  //get idToken from request header
+  const idToken = req.headers.authorization;
+  // console.log(idToken);
+  // verify token
+  admin
+    .auth()
+    .verifyIdToken(idToken)
+    .then(function (decodedToken) {
+      console.log("decodedToken:", decodedToken);
+      dal.editProfile(req.params.email, req.params.user).then((response) => {
+        console.log(response);
+        res.send(response);
+      });
+    })
+    .catch(function (error) {
+      // console.log("error:", error);
+      res.sendStatus(401).send("Authentication Fail!");
+    });
+});
+
 // all accounts
 app.get("/account/all", function (req, res) {
   dal.all().then((docs) => {

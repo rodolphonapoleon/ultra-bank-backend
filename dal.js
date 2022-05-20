@@ -23,6 +23,10 @@ function create(name, email) {
       email,
       accountNumber: Math.floor(10000000 + Math.random() * 90000000).toString(),
       balance: 0,
+      gender: null,
+      dob: null,
+      phoneNumber: null,
+      address: null,
     };
     collection.insertOne(doc, { w: 1 }, function (err, result) {
       err ? reject(err) : resolve(doc);
@@ -69,6 +73,29 @@ function update(email, amount) {
   });
 }
 
+// edit profile
+function editProfile(email, user) {
+  const newProfile = JSON.parse(user);
+  return new Promise((resolve, reject) => {
+    const customers = db.collection("users").findOneAndUpdate(
+      { email: email },
+      {
+        $set: {
+          name: newProfile.name,
+          gender: newProfile.gender,
+          dob: newProfile.dob,
+          phoneNumber: newProfile.phoneNumber,
+          address: newProfile.address,
+        },
+      },
+      { returnOriginal: false },
+      function (err, documents) {
+        err ? reject(err) : resolve(documents);
+      }
+    );
+  });
+}
+
 // return all users by using the collection.find method
 function all() {
   return new Promise((resolve, reject) => {
@@ -81,4 +108,4 @@ function all() {
   });
 }
 
-module.exports = { create, findOne, find, update, all };
+module.exports = { create, findOne, find, update, editProfile, all };
