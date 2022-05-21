@@ -37,6 +37,43 @@ app.get("/account/create/:name/:email", function (req, res) {
   });
 });
 
+// create TRANSACTION
+app.get("/account/createtransaction/:transaction", function (req, res) {
+  const idToken = req.headers.authorization;
+  admin
+    .auth()
+    .verifyIdToken(idToken)
+    .then(function (decodedToken) {
+      //create transaction
+      dal.createTransaction(req.params.transaction).then((transaction) => {
+        console.log(transaction);
+        res.send(transaction);
+      });
+    })
+    .catch(function (error) {
+      // console.log("error:", error);
+      res.sendStatus(401).send("Authentication Fail!");
+    });
+});
+
+//find transactions by user email
+app.get("/account/findTransactions/:email", function (req, res) {
+  //get idToken from request header
+  // const idToken = req.headers.authorization;
+  // admin
+  //   .auth()
+  //   .verifyIdToken(idToken)
+  //   .then(function (decodedToken) {
+  dal.findTransactions(req.params.email).then((response) => {
+    res.send(response);
+  });
+  // })
+  // .catch(function (error) {
+  //   // console.log("error:", error);
+  //   res.sendStatus(401).send("Authentication Fail!");
+  // });
+});
+
 // login user
 app.get("/account/login/:email/:password", function (req, res) {
   dal.find(req.params.email).then((user) => {
@@ -96,8 +133,6 @@ app.get("/account/update/:email/:amount", function (req, res) {
 app.get("/account/edit/:email/:user", function (req, res) {
   //get idToken from request header
   const idToken = req.headers.authorization;
-  // console.log(idToken);
-  // verify token
   admin
     .auth()
     .verifyIdToken(idToken)
