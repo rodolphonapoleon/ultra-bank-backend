@@ -4,6 +4,11 @@ var cors = require("cors");
 var dal = require("./dal.js");
 require("dotenv").config();
 
+var swaggerUi = require("swagger-ui-express");
+var swaggerDocument = require("./swagger.json");
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 const PORT = 3000;
 
 app.use(cors());
@@ -13,7 +18,7 @@ app.get("/", (req, res) => {
 });
 
 // create user account
-app.get("/account/create/:name/:email", function (req, res) {
+app.post("/account/create/:name/:email", function (req, res) {
   const idToken = req.headers.authorization;
   admin
     .auth()
@@ -31,7 +36,7 @@ app.get("/account/create/:name/:email", function (req, res) {
 });
 
 // create TRANSACTION
-app.get("/account/createtransaction/:transaction", function (req, res) {
+app.post("/account/createtransaction/:transaction", function (req, res) {
   const idToken = req.headers.authorization;
   admin
     .auth()
@@ -63,7 +68,7 @@ app.get("/account/findOne/:email", function (req, res) {
 });
 
 // update - deposit/withdraw amount
-app.get("/account/update/:email/:amount", function (req, res) {
+app.put("/account/update/:email/:amount", function (req, res) {
   var amount = Number(req.params.amount);
   //get idToken from request header
   const idToken = req.headers.authorization;
@@ -82,7 +87,7 @@ app.get("/account/update/:email/:amount", function (req, res) {
 });
 
 //edit Profile
-app.get("/account/edit/:email/:user", function (req, res) {
+app.put("/account/edit/:email/:user", function (req, res) {
   //get idToken from request header
   const idToken = req.headers.authorization;
   admin
