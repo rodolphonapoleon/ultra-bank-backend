@@ -1,7 +1,8 @@
-var express = require("express");
-var app = express();
-var cors = require("cors");
-var dal = require("./dal.js");
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const dal = require("./dal.js");
+const admin = require("./admin");
 require("dotenv").config();
 
 var swaggerUi = require("swagger-ui-express");
