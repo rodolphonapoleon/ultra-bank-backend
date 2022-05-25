@@ -2,9 +2,9 @@ var express = require("express");
 var app = express();
 var cors = require("cors");
 // var dal = require("./dal.js");
-require("dotenv").config();
+// require("dotenv").config();
 
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 app.use(cors());
 
