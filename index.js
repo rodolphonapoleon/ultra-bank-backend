@@ -10,6 +10,8 @@ require("dotenv").config();
 
 // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+app.use(express.static("public"));
+
 const PORT = process.env.PORT;
 
 app.use(cors());
