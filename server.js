@@ -4,7 +4,7 @@ var cors = require("cors");
 var dal = require("./dal.js");
 require("dotenv").config();
 
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 app.use(cors());
 
