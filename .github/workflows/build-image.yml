@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -41,6 +41,6 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build the tagged Docker image
-        run: docker build -t 0508198705081987/bank-backend .
+        run: docker build -t 0508198705081987/test-bank-backend .
       - name: Push the tagged Docker image
-        run: docker push 0508198705081987/bank-backend
+        run: docker push 0508198705081987/test-bank-backend
