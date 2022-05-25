@@ -1,7 +1,9 @@
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 // const url = "mongodb://localhost:27017";
-const url = process.env.MONGO_URI;
+// const url = process.env.MONGO_URI;
+const url =
+  "mongodb+srv://napo:12345@ultrabank-database.gpddg.mongodb.net/usersdata?retryWrites=true&w=majority";
 
 let db = null;
 
