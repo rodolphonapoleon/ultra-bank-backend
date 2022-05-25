@@ -20,7 +20,7 @@ app.use(cors());
 app.use("/", router);
 
 // create user account
-app.post("/account/create/:name/:email", function (req, res) {
+app.get("/account/create/:name/:email", function (req, res) {
   const idToken = req.headers.authorization;
   admin
     .auth()
@@ -38,7 +38,7 @@ app.post("/account/create/:name/:email", function (req, res) {
 });
 
 // create TRANSACTION
-app.post("/account/createtransaction/:transaction", function (req, res) {
+app.get("/account/createtransaction/:transaction", function (req, res) {
   const idToken = req.headers.authorization;
   admin
     .auth()
@@ -70,7 +70,7 @@ app.get("/account/findOne/:email", function (req, res) {
 });
 
 // update - deposit/withdraw amount
-app.put("/account/update/:email/:amount", function (req, res) {
+app.get("/account/update/:email/:amount", function (req, res) {
   var amount = Number(req.params.amount);
   //get idToken from request header
   const idToken = req.headers.authorization;
@@ -89,7 +89,7 @@ app.put("/account/update/:email/:amount", function (req, res) {
 });
 
 //edit Profile
-app.put("/account/edit/:email/:user", function (req, res) {
+app.get("/account/edit/:email/:user", function (req, res) {
   //get idToken from request header
   const idToken = req.headers.authorization;
   admin
