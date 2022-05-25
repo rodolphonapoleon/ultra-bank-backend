@@ -1,0 +1,24 @@
+{
+  "name": "ultra-bank-backend",
+  "version": "1.0.0",
+  "description": "Bank backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodolphonapoleon/ultra-bank-backend.git"
+  },
+  "author": "rnapoleon@imajine.ht",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodolphonapoleon/ultra-bank-backend/issues"
+  },
+  "homepage": "https://github.com/rodolphonapoleon/ultra-bank-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
+}
