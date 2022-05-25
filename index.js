@@ -9,12 +9,10 @@ require("dotenv").config();
 // const swaggerDocument = require("./swagger.json");
 
 // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
+app.use(cors());
 app.use(express.static("public"));
 
 const PORT = process.env.PORT;
-
-app.use(cors());
 
 // for testing purposes
 app.use("/", router);
