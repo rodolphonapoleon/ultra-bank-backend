@@ -12,8 +12,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const PORT = process.env.PORT;
 
-// used to serve static files from public directory
-// app.use(express.static("public"));
 app.use(cors());
 
 // for testing purposes
