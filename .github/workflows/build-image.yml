@@ -18,18 +18,18 @@ jobs:
       - run: npm run build --if-present
         env:
           CI: false
-          # MONGO_URI: ${{secrets.MONGO_URI}}
-          # PORT: ${{secrets.PORT}}
-          # TYPE: ${{secrets.TYPE}}
-          # PROJECT_ID: ${{secrets.PROJECT_ID}}
-          # PRIVATE_KEY_ID: ${{secrets.PRIVATE_KEY_ID}}
-          # PRIVATE_KEY: ${{secrets.PRIVATE_KEY}}
-          # CLIENT_EMAIL: ${{secrets.CLIENT_EMAIL}}
-          # CLIENT_ID: ${{secrets.CLIENT_ID}}
-          # AUTH_URI: ${{secrets.AUTH_URI}}
-          # TOKEN_URI: ${{secrets.TOKEN_URI}}
-          # AUTH_PROVIDER_X509_CERT_URL: ${{secrets.AUTH_PROVIDER_X509_CERT_URL}}
-          # CLIENT_X509_CERT_URL: ${{secrets.CLIENT_X509_CERT_URL}}
+          MONGO_URI: ${{secrets.MONGO_URI}}
+          PORT: ${{secrets.PORT}}
+          TYPE: ${{secrets.TYPE}}
+          PROJECT_ID: ${{secrets.PROJECT_ID}}
+          PRIVATE_KEY_ID: ${{secrets.PRIVATE_KEY_ID}}
+          PRIVATE_KEY: ${{secrets.PRIVATE_KEY}}
+          CLIENT_EMAIL: ${{secrets.CLIENT_EMAIL}}
+          CLIENT_ID: ${{secrets.CLIENT_ID}}
+          AUTH_URI: ${{secrets.AUTH_URI}}
+          TOKEN_URI: ${{secrets.TOKEN_URI}}
+          AUTH_PROVIDER_X509_CERT_URL: ${{secrets.AUTH_PROVIDER_X509_CERT_URL}}
+          CLIENT_X509_CERT_URL: ${{secrets.CLIENT_X509_CERT_URL}}
 
   build:
     runs-on: ubuntu-latest
@@ -41,6 +41,6 @@ jobs:
         id: vars
         run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
       - name: Build the tagged Docker image
-        run: docker build -t 0508198705081987/test-bank-backend-a .
+        run: docker build -t 0508198705081987/test-bank-backend-b .
       - name: Push the tagged Docker image
-        run: docker push 0508198705081987/test-bank-backend-a
+        run: docker push 0508198705081987/test-bank-backend-b
