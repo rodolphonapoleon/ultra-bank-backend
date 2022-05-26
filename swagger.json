@@ -4,17 +4,18 @@
     "version": "1.0.0",
     "title": "Ultra Bank",
     "description": "The Ultra Bank apllication API",
+    "contact": { "email": "rnapoleon@imajine.ht" },
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "localhost:3000",
+  "host": "",
   "basePath": "/",
   "tags": [
     {
       "name": "Bank",
-      "description": "API for users in the system"
+      "description": "API for the banking app routes"
     }
   ],
   "schemes": ["http"],
@@ -25,7 +26,7 @@
     "/account/all": {
       "get": {
         "tags": ["Users"],
-        "summary": "Get all users information in the system",
+        "summary": "Get all users information",
         "responses": {
           "200": {
             "description": "OK",
@@ -57,6 +58,127 @@
             }
           }
         }
+      }
+    },
+    "/account/create/{name}/{email}": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create user account",
+        "description": "",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "Name of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email of the user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/User" }
+          }
+        },
+        "security": [{ "idToken": [] }]
+      }
+    },
+    "/account/update/{email}/{amount}": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update balance / Make a deposit or withdraw",
+        "description": "",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "in": "path",
+            "description": "Amount to update the balance",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/User" }
+          }
+        },
+        "security": [{ "idToken": [] }]
+      }
+    },
+    "/account/edit/{email}/{user}": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update user profle",
+        "description": "",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email of the user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "description": "Updated user information",
+            "required": true,
+            "type": "User"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/User" }
+          }
+        },
+        "security": [{ "idToken": [] }]
+      }
+    },
+    "/account/createtransaction/{transaction}": {
+      "post": {
+        "tags": ["Transactions"],
+        "summary": "Create a transaction",
+        "description": "",
+        "consumes": ["multipart/form-data"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "transaction",
+            "in": "path",
+            "description": "Transaction",
+            "required": true,
+            "type": "Transaction"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": { "$ref": "#/definitions/Transaction" }
+          }
+        },
+        "security": [{ "idToken": [] }]
       }
     },
     "/account/findTransactions/{email}": {
