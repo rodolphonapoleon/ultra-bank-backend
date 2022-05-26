@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Ultra Bank",
+    "title": "UltraBank",
     "description": "The Ultra Bank apllication API",
     "contact": { "email": "rnapoleon@imajine.ht" },
     "license": {
@@ -10,12 +10,10 @@
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "",
-  "basePath": "/",
   "tags": [
     {
-      "name": "Bank",
-      "description": "API for the banking app routes"
+      "name": "API Documentation",
+      "description": "for the banking app."
     }
   ],
   "schemes": ["http"],
